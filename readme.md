@@ -26,3 +26,12 @@ poetry python main.py
 ```
 
 All pics will be saved into `./images` directory (will be created if not exists).
+
+### SpaceX
+```sh
+# With Launch ID passed
+poetry run python fetch_spacex_images.py 5eb87d47ffd86e000604b38a
+
+# No Launch ID specified, latest launch is used by default
+poetry run python fetch_spacex_images.py
+```
