@@ -5,10 +5,6 @@ from environs import Env
 
 from downloader import download_image
 
-env = Env()
-env.read_env()
-NASA_API_KEY = env('NASA_API_KEY')
-
 
 def fetch_nasa_apod(count=1):
     """Download NASA APOD pics via API"""
@@ -27,6 +23,10 @@ def fetch_nasa_apod(count=1):
 
 
 if __name__ == '__main__':
+    env = Env()
+    env.read_env()
+    NASA_API_KEY = env('NASA_API_KEY')
+
     parser = argparse.ArgumentParser(prog='Fetch NASA Pics of the Day')
     parser.add_argument('count', default=1, nargs='?',
                         help="How many pics to fetch.")

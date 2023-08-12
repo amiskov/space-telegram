@@ -7,12 +7,6 @@ from environs import Env
 
 from downloader import download_image
 
-env = Env()
-env.read_env()
-NASA_API_KEY = env('NASA_API_KEY')
-
-EPIC_BASE_URL = 'https://api.nasa.gov/EPIC'
-
 
 def fetch_nasa_epic(count=3):
     """Download EPIC photo via NASA API."""
@@ -43,6 +37,11 @@ def get_image_url(img_meta: dict) -> str:
 
 
 if __name__ == '__main__':
+    env = Env()
+    env.read_env()
+    NASA_API_KEY = env('NASA_API_KEY')
+    EPIC_BASE_URL = 'https://api.nasa.gov/EPIC'
+
     parser = argparse.ArgumentParser(prog='Fetch NASA EPIC image.')
     parser.add_argument('count', default=1, nargs='?',
                         help="How many pics to fetch.")

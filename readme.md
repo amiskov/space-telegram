@@ -12,6 +12,8 @@ Get your [NASA API KEY](https://api.nasa.gov/#signUp) and insert it into `.env` 
 cp .env.example .env # and paste your secrets into `.env`
 ```
 
+Also, add your Telegram API key if you plan to use the bot functionality.
+
 Install deps:
 
 ```sh
