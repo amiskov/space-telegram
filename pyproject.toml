@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "space-telegram"
+version = "0.1.0"
+description = ""
+authors = ["Andrey Miskov <amiskov@gmail.com>"]
+readme = "README.md"
+packages = [{include = "space_telegram"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+environs = "^9.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
