@@ -1,7 +1,7 @@
 import requests
 import argparse
 
-from helpers import download_image
+from downloader import download_image
 
 
 def fetch_spacex_launch(launch_id='latest'):
@@ -21,5 +21,5 @@ if __name__ == '__main__':
     parser.add_argument('launch_id', default='latest', nargs='?',
                         help="SpaceX launch ID (latest by default).")
     args = parser.parse_args()
-    launch_id = args.launch_id  # e.g. '5eb87d47ffd86e000604b38a'
+    launch_id = args.launch_id
     fetch_spacex_launch(launch_id)

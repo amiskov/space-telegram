@@ -19,19 +19,39 @@ poetry install
 ```
 
 ## Run
-TBD:
-
-```sh
-poetry python main.py
-```
-
-All pics will be saved into `./images` directory (will be created if not exists).
+All pics will be saved into `./images` directory (which will be created if not exists).
 
 ### SpaceX
+Fetch pics of the SapceX launch by its ID:
+
 ```sh
-# With Launch ID passed
+# Launch ID specified
 poetry run python fetch_spacex_images.py 5eb87d47ffd86e000604b38a
 
 # No Launch ID specified, latest launch is used by default
 poetry run python fetch_spacex_images.py
+```
+
+Some launches don't have pics, so there may be empty results.
+
+### NASA APOD
+Fetch NASA Astronomy Pictures of the Day:
+
+```sh
+# Fetch 3 APOD pictures
+poetry run python fetch_nasa_apod.py 3
+
+# Fetch single APOD picture
+poetry run python fetch_nasa_apod.py
+```
+
+### NASA EPIC
+Fetch NASA Earth Polychromatic Imaging Camera pictures:
+
+```sh
+# Fetch 3 EPIC pictures
+poetry run python fetch_nasa_epic.py 3
+
+# Fetch single EPIC picture
+poetry run python fetch_nasa_epic.py
 ```

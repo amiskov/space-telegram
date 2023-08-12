@@ -23,20 +23,15 @@ def get_extension_from_url(url: str) -> str | None:
 
 
 def download_image(url: str, params=None) -> None:
+    """Download an image by `url`.
+    `url` must have a file extension at the end (`.png`, `.jpg`, etc).
     """
-    `url` must have an image file extension at the end.
-
-    Картинки можно называть так: spacex1.jpg, spacex2.jpg и так далее. Для генерации индексов картинки лучше использовать enumerate.
-    Не забудьте указать расширение файла: .jpg.
-    """
-    images_path = Path('images')
-    images_path.mkdir(exist_ok=True)
-
-    filename = url.split('/')[-1]
-
     response = requests.get(url, params=params)
     response.raise_for_status()
 
+    images_path = Path('images')
+    images_path.mkdir(exist_ok=True)
+    filename = url.split('/')[-1]
     with open(images_path.joinpath(filename), 'wb') as file:
         file.write(response.content)
         print(f'{filename} has been saved.')
