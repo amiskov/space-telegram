@@ -19,7 +19,9 @@ All settings are kept in `.env` file. Create one from `.env.example`:
 cp .env.example .env
 ```
 
-You'll also need a [NASA API KEY](https://api.nasa.gov/#signUp). If you plan to use Telegram functionality, you'll also need its API KEY and chat ID.
+You'll also need [NASA API KEY](https://api.nasa.gov/#signUp).
+
+If you plan to use Telegram functionality, [obtain its API token](https://core.telegram.org/api/obtaining_api_id), get your Chat ID (channel's name) and add them to `.env`.
 
 ## Usage
 You can download space pictures or post them to your Telegram channel.
