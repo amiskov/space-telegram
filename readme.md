@@ -72,7 +72,7 @@ Send random photo from `IMAGES_DIR` directory:
 # Send one random pic
 poetry run python tg_send_pic_once.py
 
-# Send one pic by its filename
+# Send one pic from `IMAGES_DIR` by its filename
 poetry run python tg_send_pic_once.py my_pic.png
 ```
 

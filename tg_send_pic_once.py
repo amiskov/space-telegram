@@ -1,4 +1,5 @@
 import argparse
+import os
 
 import telegram
 
@@ -16,10 +17,13 @@ def main():
     filename = args.filename
 
     if filename is None:
-        print('Pictures not found.')
+        print('Image not found.')
         return
 
-    bot.send_document(chat_id=TELEGRAM_CHAT_ID, document=open(filename, 'rb'))
+    image_path = os.path.join(IMAGES_DIR, filename)
+    bot.send_document(chat_id=TELEGRAM_CHAT_ID,
+                      document=open(image_path, 'rb'))
+    print(f'{image_path} was successfully sent.')
 
 
 if __name__ == '__main__':
