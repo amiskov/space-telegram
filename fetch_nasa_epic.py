@@ -35,7 +35,7 @@ def get_image_url(img_meta: dict) -> str:
     img = img_meta['image']
     d = date.fromisoformat(img_meta['date'].split(' ')[0])
     return (f'{EPIC_BASE_URL}/archive/natural/'
-            f'{d.year}/{d.month:02d}/{d.day:02d}/thumbs/{img}.jpg')
+            f'{d.year}/{d.month:02d}/{d.day:02d}/png/{img}.png')
 
 
 if __name__ == '__main__':
