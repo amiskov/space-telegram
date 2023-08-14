@@ -3,9 +3,11 @@ import random
 from datetime import date
 
 import requests
-from environs import Env
 
+from config import IMAGES_DIR, NASA_API_KEY
 from file_manager import download_image
+
+EPIC_BASE_URL = 'https://api.nasa.gov/EPIC'
 
 
 def fetch_nasa_epic(count=3):
@@ -25,7 +27,7 @@ def fetch_nasa_epic(count=3):
     sample_images = random.sample(images_meta, count)
     for img_meta in sample_images:
         url = get_image_url(img_meta)
-        download_image(url, params)
+        download_image(IMAGES_DIR, url, params)
 
 
 def get_image_url(img_meta: dict) -> str:
@@ -37,11 +39,6 @@ def get_image_url(img_meta: dict) -> str:
 
 
 if __name__ == '__main__':
-    env = Env()
-    env.read_env()
-    NASA_API_KEY = env('NASA_API_KEY')
-    EPIC_BASE_URL = 'https://api.nasa.gov/EPIC'
-
     parser = argparse.ArgumentParser(prog='Fetch NASA EPIC image.')
     parser.add_argument('count', default=1, nargs='?',
                         help="How many pics to fetch.")

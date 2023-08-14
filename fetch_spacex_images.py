@@ -2,6 +2,7 @@ import argparse
 
 import requests
 
+from config import IMAGES_DIR
 from file_manager import download_image
 
 
@@ -10,10 +11,13 @@ def fetch_spacex_launch(launch_id='latest'):
     url = f'https://api.spacexdata.com/v5/launches/{launch_id}'
     resp = requests.get(url)
     images_urls = resp.json()['links']['flickr']['original']
+
     if len(images_urls) == 0:
         print(f"There's no images for the launch with id `{launch_id}`.")
+
     for url in images_urls:
-        download_image(url)
+        download_image(IMAGES_DIR, url)
+
     print(f'{len(images_urls)} images has been saved.')
 
 

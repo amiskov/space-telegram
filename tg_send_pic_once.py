@@ -1,3 +1,5 @@
+import argparse
+
 import telegram
 
 from config import IMAGES_DIR, TELEGRAM_API_TOKEN, TELEGRAM_CHAT_ID
@@ -7,7 +9,12 @@ from file_manager import get_random_image
 def main():
     bot = telegram.Bot(token=TELEGRAM_API_TOKEN)
 
-    filename = get_random_image(IMAGES_DIR)
+    parser = argparse.ArgumentParser(prog='Send image to Telegram channel.')
+    parser.add_argument('filename', nargs='?', help="Image name.",
+                        default=get_random_image(IMAGES_DIR))
+    args = parser.parse_args()
+    filename = args.filename
+
     if filename is None:
         print('Pictures not found.')
         return

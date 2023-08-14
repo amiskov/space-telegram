@@ -69,7 +69,11 @@ Add your Tg Token and Chat ID to `.env`. Replace `POSTING_TIMEOUT_SEC` with the 
 Send random photo from `IMAGES_DIR` directory:
 
 ```sh
-poetry run python tg_send_random_pic.py
+# Send one random pic
+poetry run python tg_send_pic_once.py
+
+# Send one pic by its filename
+poetry run python tg_send_pic_once.py my_pic.png
 ```
 
 ### Send Random Picture to Telegram Channel Periodically
