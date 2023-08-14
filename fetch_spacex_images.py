@@ -1,7 +1,8 @@
-import requests
 import argparse
 
-from downloader import download_image
+import requests
+
+from file_manager import download_image
 
 
 def fetch_spacex_launch(launch_id='latest'):

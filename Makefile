@@ -1,2 +1,4 @@
-run:
-	poetry run python main.py
+isort:
+	poetry run isort . 
+lint:
+	poetry run flake8 *.py

@@ -1,11 +1,11 @@
+import argparse
 import random
 from datetime import date
-import argparse
 
 import requests
 from environs import Env
 
-from downloader import download_image
+from file_manager import download_image
 
 
 def fetch_nasa_epic(count=3):
