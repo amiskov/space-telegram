@@ -10,6 +10,7 @@ def fetch_spacex_launch(launch_id='latest'):
     """Download pics of the SpaceX launch via API."""
     url = f'https://api.spacexdata.com/v5/launches/{launch_id}'
     resp = requests.get(url)
+    resp.raise_for_status()
     images_urls = resp.json()['links']['flickr']['original']
 
     if not images_urls:
