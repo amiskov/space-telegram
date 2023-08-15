@@ -23,7 +23,7 @@ def main():
         else timedelta(seconds=int(args.period))
 
     pics = get_dir_images(IMAGES_DIR)
-    if len(pics) == 0:
+    if not pics:
         print("Images not found.")
         return
 

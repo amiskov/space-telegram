@@ -28,7 +28,7 @@ def get_random_image(dir: str) -> str | None:
     get_random_filename('dir_without_images') # None
     """
     images = get_dir_images(dir)
-    if len(images) == 0:
+    if not images:
         return None
     return random.choice(images)
 

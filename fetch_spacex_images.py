@@ -12,7 +12,7 @@ def fetch_spacex_launch(launch_id='latest'):
     resp = requests.get(url)
     images_urls = resp.json()['links']['flickr']['original']
 
-    if len(images_urls) == 0:
+    if not images_urls:
         print(f"There's no images for the launch with id `{launch_id}`.")
 
     for url in images_urls:
