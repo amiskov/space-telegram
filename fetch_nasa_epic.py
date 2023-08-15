@@ -10,10 +10,10 @@ from file_manager import download_image
 EPIC_BASE_URL = 'https://api.nasa.gov/EPIC'
 
 
-def fetch_nasa_epic(count=3):
+def fetch_nasa_epic(img_dir: str, api_key: str, count: int = 3):
     """Download EPIC photo via NASA API."""
     params = {
-        'api_key': NASA_API_KEY,
+        'api_key': api_key,
     }
     url_meta = f'{EPIC_BASE_URL}/api/natural/images'
 
@@ -27,7 +27,7 @@ def fetch_nasa_epic(count=3):
     sample_images = random.sample(images_meta, count)
     for img_meta in sample_images:
         url = get_image_url(img_meta)
-        download_image(IMAGES_DIR, url, params)
+        download_image(img_dir, url, params)
 
 
 def get_image_url(img_meta: dict) -> str:
@@ -43,5 +43,4 @@ if __name__ == '__main__':
     parser.add_argument('count', default=1, nargs='?',
                         help="How many pics to fetch.")
     args = parser.parse_args()
-    count = int(args.count)
-    fetch_nasa_epic(count)
+    fetch_nasa_epic(IMAGES_DIR, NASA_API_KEY, int(args.count))
