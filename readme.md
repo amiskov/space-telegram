@@ -72,8 +72,8 @@ Send random photo from `IMAGES_DIR` directory:
 # Send one random pic
 poetry run python tg_send_pic_once.py
 
-# Send one pic from `IMAGES_DIR` by its filename
-poetry run python tg_send_pic_once.py my_pic.png
+# Send one pic, path is taken from parameter
+poetry run python tg_send_pic_once.py images/my_pic.png
 ```
 
 ### Send Random Picture to Telegram Channel Periodically

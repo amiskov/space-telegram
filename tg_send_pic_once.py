@@ -20,10 +20,9 @@ def main():
         print('Image not found.')
         return
 
-    image_path = os.path.join(IMAGES_DIR, filename)
-    with open(image_path, 'rb') as img:
+    with open(filename, 'rb') as img:
         bot.send_document(chat_id=TELEGRAM_CHAT_ID, document=img)
-    print(f'{image_path} was successfully sent.')
+    print(f'{filename} was successfully sent.')
 
 
 if __name__ == '__main__':
