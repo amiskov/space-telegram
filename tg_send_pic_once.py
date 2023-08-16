@@ -21,8 +21,8 @@ def main():
         return
 
     image_path = os.path.join(IMAGES_DIR, filename)
-    bot.send_document(chat_id=TELEGRAM_CHAT_ID,
-                      document=open(image_path, 'rb'))
+    with open(image_path, 'rb') as img:
+        bot.send_document(chat_id=TELEGRAM_CHAT_ID, document=img)
     print(f'{image_path} was successfully sent.')
 
 
