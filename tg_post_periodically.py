@@ -28,8 +28,14 @@ def main():
         return
 
     while True:
-        random.shuffle(pics)
-        send_files_periodically(bot, TELEGRAM_CHAT_ID, pics, period)
+        try:
+            random.shuffle(pics)
+            send_files_periodically(bot, TELEGRAM_CHAT_ID, pics, period)
+        except telegram.error.NetworkError as e:
+            timeout = 5
+            logging.error(e)
+            logging.info(f'Retry in {timeout} seconds...')
+            time.sleep(timeout)
 
 
 def send_files_periodically(bot: telegram.Bot, chat_id: str, files: list[str],
