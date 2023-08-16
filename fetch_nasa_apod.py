@@ -15,10 +15,14 @@ def fetch_nasa_apod(img_dir: str, api_key: str, count: int = 1):
     apod_url = 'https://api.nasa.gov/planetary/apod'
     resp = requests.get(apod_url, params=params)
     resp.raise_for_status()
-    images = resp.json()
-    for img in images:
-        download_image(img_dir, img['url'])
-    print(f'{len(images)} images has been saved.')
+    apods = resp.json()
+    images_saved = 0
+    for media in apods:
+        if media['media_type'] != 'image':
+            continue
+        download_image(img_dir, media['url'])
+        images_saved += 1
+    print(f'{images_saved} images has been saved.')
 
 
 if __name__ == '__main__':
