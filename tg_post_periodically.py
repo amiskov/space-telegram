@@ -28,26 +28,22 @@ def main():
         return
 
     while True:
-        shuffled_pics = random.sample(pics, len(pics))
-        send_files_periodically(bot, TELEGRAM_CHAT_ID, shuffled_pics, period)
+        random.shuffle(pics)
+        send_files_periodically(bot, TELEGRAM_CHAT_ID, pics, period)
 
 
 def send_files_periodically(bot: telegram.Bot, chat_id: str, files: list[str],
                             period: timedelta):
-    """Send each file from `files` via `bot` to `chat_id` with `period`.
-
-    Removes a file path from `files` after sending. Stops when `files`
-    list is empty.
-    """
-    files_count = len(files)
-    logging.info(f'Start sending {files_count} files.')
-    while len(files) > 0:
-        file = files.pop()
+    """Send each file from `files` via `bot` to `chat_id` with `period`."""
+    logging.info(f'Start sending {len(files)} files.')
+    files_remain = len(files)
+    for file in files:
         with open(file, 'rb') as img:
             bot.send_document(chat_id=chat_id, document=img)
-            logging.info(f'{file} sent, {len(files)} files remains.')
+            files_remain -= 1
+            logging.info(f'{file} sent, {files_remain} files remain.')
         time.sleep(period.total_seconds())
-    logging.info(f'{files_count} are sent.')
+    logging.info(f'All {len(files)} files are sent.')
 
 
 if __name__ == '__main__':
